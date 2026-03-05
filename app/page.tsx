@@ -1,36 +1,31 @@
-import Form from "next/form";
-import prisma from "./lib/prisma";
+import Link from "next/link";
+import { getAllPosts } from "./lib/data";
+import { Blog } from "./ui/Blog";
 
-export default function Home() {
-  // Server Action
-  async function createPost() {
-    "use server";
-
-    try {
-      // ユーザー作成処理
-      await prisma.post.create({
-        data: {
-          title: "Hello",
-          description: "This is my second post.",
-        },
-      });
-
-      console.log("投稿作成に成功しました");
-    } catch (error) {
-      console.error("投稿作成に失敗しました, " + error);
-    }
-  }
+export default async function Home() {
+  const posts = await getAllPosts();
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
-      <Form action={createPost} className="space-y-4">
-        <button
-          type="submit"
-          className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+    <main className="w-full h-full">
+      <div className="md:w-2/4 sm:w-3/4 m-auto p-4 my-5 rounded-lg bg-blue-900 drop-shadow-xl">
+        <h1 className="text-slate-200 text-center text-2xl font-extrabold">
+          Full Stack Blog 📝
+        </h1>
+      </div>
+      <div className="flex my-5">
+        <Link
+          href={"/"}
+          className=" md:w-1/6 sm:w-2/4 text-center rounded-md p-2 m-auto bg-slate-300 font-semibold"
         >
-          投稿を作成
-        </button>
-      </Form>
-    </div>
+          ブログ新規作成
+        </Link>
+      </div>
+
+      <div className="w-full flex flex-col justify-center items-center">
+        {posts.map((post) => (
+          <Blog key={post.id} post={post} />
+        ))}
+      </div>
+    </main>
   );
 }

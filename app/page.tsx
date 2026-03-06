@@ -14,7 +14,7 @@ export default async function Home() {
       </div>
       <div className="flex my-5">
         <Link
-          href={"/"}
+          href={"/blog/add"}
           className=" md:w-1/6 sm:w-2/4 text-center rounded-md p-2 m-auto bg-slate-300 font-semibold"
         >
           ブログ新規作成

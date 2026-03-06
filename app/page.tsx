@@ -11,6 +11,7 @@ export default async function Home() {
         <h1 className="text-slate-200 text-center text-2xl font-extrabold">
           Full Stack Blog 📝
         </h1>
+        <p className="text-center">Github actionsから自動デプロイしました。</p>
       </div>
       <div className="flex my-5">
         <Link

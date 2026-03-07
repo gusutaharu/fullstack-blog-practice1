@@ -9,3 +9,16 @@ export async function getAllPosts() {
     return [];
   }
 }
+
+export async function getEditPost(id: number) {
+  try {
+    const post = await prisma.post.findUnique({
+      where: { id: Number(id) },
+    });
+    console.log(post);
+    return post;
+  } catch (error) {
+    console.error("Error fetching post:", error);
+    return [];
+  }
+}

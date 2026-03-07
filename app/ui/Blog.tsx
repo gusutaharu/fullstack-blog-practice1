@@ -13,10 +13,11 @@ export const Blog = ({ post }: PostProps) => {
     >
       <div className="flex items-center my-3">
         <div className="mr-auto">
+          <p>{post.id}</p>
           <h2 className="mr-auto font-semibold">{post.title}</h2>
         </div>
         <Link
-          href={"/"}
+          href={`/blog/edit/${post.id}`}
           className="px-4 py-1 text-center text-xl bg-slate-900 rounded-md font-semibold text-slate-200"
         >
           編集

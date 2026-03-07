@@ -44,7 +44,7 @@ function EditForm({
           disabled={isPending}
           className="font-semibold px-4 py-2 shadow-xl bg-slate-200 rounded-lg m-auto hover:bg-slate-100"
         >
-          {isPending ? "投稿中..." : "投稿"}
+          {isPending ? "更新中..." : "更新"}
         </button>
         <button className="ml-2 font-semibold px-4 py-2 shadow-xl bg-red-400 rounded-lg m-auto hover:bg-slate-100">
           削除

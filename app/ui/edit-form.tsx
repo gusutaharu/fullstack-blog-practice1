@@ -3,6 +3,7 @@
 import { useActionState } from "react";
 import { editPost } from "@/app/lib/action";
 import { State } from "@/app/lib/difinitions";
+import { DeleteButton } from "./delete-button";
 
 function EditForm({
   post,
@@ -16,7 +17,7 @@ function EditForm({
     initialState,
   );
   return (
-    <>
+    <div className="flex">
       {state.message && (
         <p className="text-red-500 font-semibold mb-3">{state.message}</p>
       )}
@@ -46,11 +47,9 @@ function EditForm({
         >
           {isPending ? "更新中..." : "更新"}
         </button>
-        <button className="ml-2 font-semibold px-4 py-2 shadow-xl bg-red-400 rounded-lg m-auto hover:bg-slate-100">
-          削除
-        </button>
       </form>
-    </>
+      <DeleteButton id={post.id} />
+    </div>
   );
 }
 

@@ -46,7 +46,11 @@ export const addPost = async (prevState: State, formData: FormData) => {
   redirect("/");
 };
 
-export const editPost = async (id: number, prevState: State, formData: FormData) => {
+export const editPost = async (
+  id: number,
+  prevState: State,
+  formData: FormData,
+) => {
   const validatedFields = PostSchema.safeParse({
     title: formData.get("title"),
     description: formData.get("description"),
@@ -72,6 +76,14 @@ export const editPost = async (id: number, prevState: State, formData: FormData)
       message: "送信に失敗しました。再度お試しください。",
     };
   }
+  revalidatePath("/");
+  redirect("/");
+};
+
+export const deletePost = async (id: number) => {
+  await prisma.post.delete({
+    where: { id: Number(id) },
+  });
   revalidatePath("/");
   redirect("/");
 };

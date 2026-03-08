@@ -1,21 +1,31 @@
 "use client";
-import { useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useEffect } from "react";
 import toast, { Toaster } from "react-hot-toast";
 
 function Notification() {
   const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const { replace } = useRouter();
 
-  const successPost = searchParams.get("success");
-  const successEdit = searchParams.get("updated");
-  const successDelete = searchParams.get("deleted");
-
-  if (successPost === "true") {
-    toast.success("投稿が完了しました！", { id: "post-success" });
-  } else if (successEdit === "true") {
-    toast.success("投稿が更新されました！", { id: "post-edit" });
-  } else if (successDelete === "true") {
-    toast.success("投稿が削除されました！", { id: "post-delete" });
-  }
+  useEffect(() => {
+    const msg = searchParams.get("msg");
+    if (!msg) return;
+    switch (msg) {
+      case "created":
+        toast.success("新しく投稿しました！");
+        break;
+      case "updated":
+        toast.success("内容を更新しました！");
+        break;
+      case "deleted":
+        toast.error("削除しました");
+        break;
+    }
+    const params = new URLSearchParams(searchParams);
+    params.delete("msg");
+    replace(`${pathname}?${params.toString()}`);
+  }, [searchParams, pathname, replace]);
   return <Toaster />;
 }
 

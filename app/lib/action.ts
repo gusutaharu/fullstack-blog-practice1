@@ -43,7 +43,7 @@ export const addPost = async (prevState: State, formData: FormData) => {
     };
   }
   revalidatePath("/");
-  redirect("/");
+  redirect("/?success=true");
 };
 
 export const editPost = async (
@@ -77,7 +77,7 @@ export const editPost = async (
     };
   }
   revalidatePath("/");
-  redirect("/");
+  redirect("/?updated=true");
 };
 
 export const deletePost = async (id: number) => {
@@ -85,5 +85,5 @@ export const deletePost = async (id: number) => {
     where: { id: Number(id) },
   });
   revalidatePath("/");
-  redirect("/");
+  redirect("/?deleted=true");
 };

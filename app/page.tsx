@@ -1,11 +1,10 @@
 import Link from "next/link";
-import { getAllPosts } from "./lib/data";
-import { Blog } from "./ui/Blog";
 import Notification from "./ui/notification";
 import { Suspense } from "react";
+import Bloglist from "./ui/Bloglist";
+import { BlogSkeltons } from "./ui/skeloton";
 
 export default async function Home() {
-  const posts = await getAllPosts();
   return (
     <main className="w-full h-full">
       <Suspense fallback={null}>
@@ -25,12 +24,9 @@ export default async function Home() {
           ブログ新規作成
         </Link>
       </div>
-
-      <div className="w-full flex flex-col justify-center items-center">
-        {posts.map((post) => (
-          <Blog key={post.id} post={post} />
-        ))}
-      </div>
+      <Suspense fallback={<BlogSkeltons />}>
+        <Bloglist />
+      </Suspense>
     </main>
   );
 }

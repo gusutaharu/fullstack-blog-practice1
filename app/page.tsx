@@ -2,12 +2,15 @@ import Link from "next/link";
 import { getAllPosts } from "./lib/data";
 import { Blog } from "./ui/Blog";
 import Notification from "./ui/notification";
+import { Suspense } from "react";
 
 export default async function Home() {
   const posts = await getAllPosts();
   return (
     <main className="w-full h-full">
-      <Notification />
+      <Suspense fallback={null}>
+        <Notification />
+      </Suspense>
       <div className="md:w-2/4 sm:w-3/4 m-auto p-4 my-5 rounded-lg bg-blue-900 drop-shadow-xl">
         <h1 className="text-slate-200 text-center text-2xl font-extrabold">
           Full Stack Blog 📝

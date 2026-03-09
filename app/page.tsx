@@ -4,7 +4,7 @@ import { Suspense } from "react";
 import Bloglist from "./ui/Bloglist";
 import { BlogSkeltons } from "./ui/skeloton";
 
-export default async function Home() {
+export default function Home() {
   return (
     <main className="w-full h-full">
       <Suspense fallback={null}>

@@ -11,9 +11,9 @@ const PostBlog = () => {
     <>
       <div className="w-full m-auto flex my-4">
         <div className="flex flex-col justify-center items-center m-auto">
-          <p className="text-2xl text-slate-800 font-bold p-3">
+          <h1 className="text-2xl text-slate-800 font-bold p-3">
             ブログ新規作成 🚀
-          </p>
+          </h1>
           {state.message && (
             <p className="text-red-500 font-semibold mb-3">
               {state.message}

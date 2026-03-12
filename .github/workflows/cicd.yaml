@@ -31,6 +31,7 @@ jobs:
             --health-retries 5
     env:
       DATABASE_URL: postgresql://testuser:testpassword@localhost:5432/test_blog_db
+      DIRECT_URL: postgresql://testuser:testpassword@localhost:5432/test_blog_db
 
     steps:
       - uses: actions/checkout@v4

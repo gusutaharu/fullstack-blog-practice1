@@ -7,7 +7,7 @@ interface PostProps {
 
 export const Blog = ({ post }: PostProps) => {
   return (
-    <div
+    <li
       key={post.id}
       className="w-3/4 p-4 rounded-md mx-3 my-2 bg-slate-300 flex flex-col justify-center"
     >
@@ -29,6 +29,6 @@ export const Blog = ({ post }: PostProps) => {
       <div className="mr-auto my-1">
         <blockquote className="font-bold text-slate-700">2023-10-10</blockquote>
       </div>
-    </div>
+    </li>
   );
 };

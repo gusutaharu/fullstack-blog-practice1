@@ -10,7 +10,7 @@ const PostSchema = z.object({
   title: z
     .string()
     .min(1, "タイトルは必須です")
-    .max(20, "タイトルは20文字以内で入力してください"),
+    .max(30, "タイトルは30文字以内で入力してください"),
   description: z
     .string()
     .min(1, "記事詳細は必須です")

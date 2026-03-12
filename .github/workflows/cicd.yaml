@@ -27,8 +27,8 @@ jobs:
         run: npx prisma generate
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
-      - name: Deploy Database
-        run: npx prisma migrate deploy
+      - name: Push DB Schema
+        run: npx prisma db push
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
       - name: Install Playwright Browsers
